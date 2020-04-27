@@ -22,6 +22,10 @@ Utility functions:
 utils.remove_silence(input_audio):
 	given an input audio in WAV format, this function will remove silence periods from it
 	and make an audio file named input_audio_rmsilence.wav
+	
+utils.remove_silence_url(input_url):
+	given an input audio web url, this function will remove silence periods from it
+	and make an audio file named temp_rmsilence.wav
 
 utils.get_audio_from_url(input_url, output_file):
 	given an input url having mp3 audio file and a output filename, this function generates output audio file
