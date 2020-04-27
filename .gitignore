@@ -41,3 +41,7 @@ IITD-speech-vone/models/*
 .Trashes
 ehthumbs.db
 Thumbs.db
+*.pyo
+*.pyc
+
+
