@@ -1,13 +1,7 @@
 def findDate(sentence):
 
     import json
-
-    from checkValidity import dateExist
     outSentence = {'Date':'-1','Month':'-1','Year':'-1'}
-
-    status = dateExist(sentence)
-    if(status==0):
-        return outSentence
 
     rawMonths=['जनवरी','फरवरी','मार्च','अप्रैल','मई','जून','जुलाई','अगस्त','सितंबर','अक्टूबर','नवंबर','दिसंबर']
     hindiMonths=['चैत्र','बैसाख','ज्येष्ठ','आषाढ़','सावन','भाद्रपद','आश्विन','कार्तिक','अग्रहायण','पौष','माघ','फाल्गुन']
