@@ -116,16 +116,22 @@ import Theme.extractFeatures as Th_exf
 
 
 #HIGH LEVEL routines
-
+# to be used when the audio is locally stored
 def remove_silence(input_audio):
 	'''
 	This will produce an audio with silent parts removed
 	Input: audio file(in .wav format)
-	Output: audio file with silence removed(in .wav format); name is input_audio_rmsilence.wav by default
+	Output: audio file with silence removed(in .wav format); name is <input_audio>+_rmsilence.wav by default
 	'''
 	output_audio, ext = os.path.splitext(input_audio)
 	output_audio += '_rmsilence.wav'
 	sln.remove_silence(input_audio, output_audio)
+
+# to be used when we are to download the audio from web url
+def remove_silence_url(input_url):
+	get_audio_from_url(input_url,'temp.mp3')
+	remove_silence(input_audio = 'temp.mp3')
+	return
 #***************************************************--------------------------------------------------------------------*********************************************************
 
 def get_audio_from_url(input_url, output_file):
@@ -154,7 +160,7 @@ def get_transcript(bucket_name, bucket_folder, key_json, audio_folder):
 
 
 #***************************************************--------------------------------------------------------------------*********************************************************
-
+# to be used when the audio is locally stored
 def get_gender( input_audio):
 	'''
 	This will return the predicted gender of the audio file 
@@ -181,8 +187,16 @@ def get_gender( input_audio):
 		return 'male'
 	else:
 		return 'female'
-#***************************************************---------------------------------------------------------------------------*************************************************	
 
+# to be used when we are to download the audio from web url	
+def get_gender_url(input_url):
+	get_audio_from_url(input_url,'temp.mp3')
+	get_gender(input_audio = 'temp.mp3')
+	os.remove('temp.mp3')
+	os.remove('temp.wav')
+	return
+#***************************************************---------------------------------------------------------------------------*************************************************	
+# to be used when the audio is locally stored
 def get_themes(input_file):
 	'''
 	this function takes transcpript of audio file in text format as input
@@ -222,8 +236,15 @@ def get_themes(input_file):
 
 	return relevant_themes
 
+# to be used when we are to download the audio from web url
+def get_themes_url(input_url):
+	get_audio_from_url(input_url,'temp.mp3')
+	get_themes(input_audio = 'temp.mp3')
+	os.remove('temp.mp3')
+	os.remove('temp.wav')
+	return
 #********************************************************---------------------------------------------------------------------**************************************************
-
+# to be used when the audio is locally stored
 def get_quality(input_audio):
 	'''
 	This will return the predicted quality of the audio file as characterized by its input_url
@@ -250,6 +271,14 @@ def get_quality(input_audio):
 		return 'reject'
 	else:
 		return 'accept'
+
+# to be used when we are to download the audio from web url
+def get_quality_url(input_url):
+	get_audio_from_url(input_url,'temp.mp3')
+	get_quality(input_audio = 'temp.mp3')
+	os.remove('temp.mp3')
+	os.remove('temp.wav')
+	return
 #***************************************************---------------------------------------------------------------------------*************************************************	
 #print(get_quality('ex2.mp3'))
 #for  e in os.listdir('mpTranscripts'):
