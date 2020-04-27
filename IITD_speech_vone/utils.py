@@ -177,12 +177,12 @@ def get_gender( input_audio):
 	input_audio_name, ext = os.path.splitext(input_audio)
 	input_audio_wav = input_audio_name + '.wav'
 	#remove_silence(input_audio_wav)
-	features = np.array([GC_exf.get_features(input_audio_name + '.wav')])
+	features = np.array([GC_exf.get_features(input_audio_name + '.wav')]).astype(float)
 	os.remove(input_audio_name + '.wav')
 	#os.remove(input_audio_name + '_rmsilence.wav')
 	#model_path = pkg_resources.resource_filename('Indian_Speech_Lib', 'models/accept_reject')
-	model = joblib.load(open('models/gender', 'rb'))
-	scaler = pickle.load(open('models/gender_scaler', 'rb'))
+	model = joblib.load(open('models/Gender_classifier_rbf_model_python3.pk', 'rb'))
+	scaler = pickle.load(open('models/scaler_gender_rbf_python3.pk', 'rb'))
 	prediction = model.predict(scaler.transform(features[:,0:136]))
 	if prediction[0]=='0':
 		return 'male'
@@ -192,10 +192,9 @@ def get_gender( input_audio):
 # to be used when we are to download the audio from web url	
 def get_gender_url(input_url):
 	get_audio_from_url(input_url,'temp.mp3')
-	get_gender(input_audio = 'temp.mp3')
+	gender = get_gender(input_audio = 'temp.mp3')
 	os.remove('temp.mp3')
-	os.remove('temp.wav')
-	return
+	return gender
 #***************************************************---------------------------------------------------------------------------*************************************************	
 # to be used when the audio is locally stored
 def get_themes(input_file):
