@@ -41,14 +41,22 @@ utils.get_gender(input_audio):
 	given an  input_audio of a file in mp3, this function will try to predict its gender
 	It will return a string denoting male or female
 
+
+utils.get_gender_url(input_url):
+	given an  input_audio web url of a file in mp3, this function will try to predict its gender
+	It will return a string denoting male or female
+
 utils.get_themes(input_file):
 	this function takes transcpript of audio file in text format as input
 	and returns list of themes relevant to this file
 
-utils.get_quality(input_url, input_audio = None):
-	given an input url(or input_audio) of a file in wav format, this function will try to predict its gender
-	It will return 'reject' if audio is rejected(poor quality) and 'accept' if audio is accepted(good quality)
+utils.get_quality(input_audio):
+	given an input_audio, this function will try to predict its quality
+	It will return 'reject' if audio is rejected(poor quality) and 'accept' if audio is accepted(good quality).
 
+utils.get_quality_url(input_url):
+	given an input_audio's web url, this function will try to predict its quality
+	It will return 'reject' if audio is rejected(poor quality) and 'accept' if audio is accepted(good quality).
 
 NOTE:
 The version of sklearn library must be "0.19.1" otherwise the models wouldn't give correct results
