@@ -44,7 +44,7 @@ import Gender.gender_classifier as  gender_classifier
 import Silence_Removal.sln as sln
 #done with Silence_Removal imports
 
-import Transcript.transcript as Transcript_tr
+# import Transcript.transcript as Transcript_tr
 #done with Automatic_Transcripts imports
 
 import Accept_Reject.extractFeatures as AR_exf
@@ -146,18 +146,18 @@ def get_audio_from_url(input_url, output_file):
 	FP.close()
 #***************************************************--------------------------------------------------------------------*********************************************************
 
-def get_transcript(bucket_name, bucket_folder, key_json, audio_folder):
-	'''
-	bucket_name , bucket_folder, key_json, audio_folder are input arguments
-	bucket_name -> name of google cloud bucket
-	bucket_folder -> name of the folder in the bucket where we want to upload audio files
-	key_json -> json file with credentials
-	audio_folder -> the folder containing audio files and we need transcripts of these audio files
-	this code outputs a folder named as 'audio_folder'_transcripts which has transcripts in .txt format with same name as audio file
-	'''
+# def get_transcript(bucket_name, bucket_folder, key_json, audio_folder):
+# 	'''
+# 	bucket_name , bucket_folder, key_json, audio_folder are input arguments
+# 	bucket_name -> name of google cloud bucket
+# 	bucket_folder -> name of the folder in the bucket where we want to upload audio files
+# 	key_json -> json file with credentials
+# 	audio_folder -> the folder containing audio files and we need transcripts of these audio files
+# 	this code outputs a folder named as 'audio_folder'_transcripts which has transcripts in .txt format with same name as audio file
+# 	'''
 
-	Transcript_tr.upload(bucket_name, bucket_folder, key_json, audio_folder)
-	Transcript_tr.get_transcript(bucket_name, bucket_folder, key_json, audio_folder)
+# 	Transcript_tr.upload(bucket_name, bucket_folder, key_json, audio_folder)
+# 	Transcript_tr.get_transcript(bucket_name, bucket_folder, key_json, audio_folder)
 
 
 #***************************************************--------------------------------------------------------------------*********************************************************
@@ -254,11 +254,11 @@ def get_quality(input_audio):
 	mtw.convert_mp3_to_wav(input_audio)
 	input_audio_name, ext = os.path.splitext(input_audio)
 	input_audio_wav = input_audio_name + '.wav'
-	features = np.array(AR_exf.get_features(input_audio_name + '.wav'))
+	features = np.array(AR_exf.get_features(input_audio_name + '.wav')).astype(float)
 	os.remove(input_audio_name + '.wav')
 	#model_path = pkg_resources.resource_filename('Indian_Speech_Lib', 'models/accept_reject')
-	model = joblib.load(open('accept_reject_model_ratings_based.pk', 'rb'))
-	scaler = pickle.load(open('scaler_acc_rej.pk', 'rb'))
+	model = joblib.load(open('models/AR_python3_SVM.pk', 'rb'))
+	scaler = pickle.load(open('models/AR_scaler.pk', 'rb'))
 	score = model.score(scaler.transform(features[:, 0:137]), features[:, 137])
 	if score > 0.5:
 		return 'reject'
@@ -268,10 +268,9 @@ def get_quality(input_audio):
 # to be used when we are to download the audio from web url
 def get_quality_url(input_url):
 	get_audio_from_url(input_url,'temp.mp3')
-	get_quality(input_audio = 'temp.mp3')
+	quality = get_quality(input_audio = 'temp.mp3')
 	os.remove('temp.mp3')
-	os.remove('temp.wav')
-	return
+	return quality
 #***************************************************---------------------------------------------------------------------------*************************************************	
 #print(get_quality('ex2.mp3'))
 #for  e in os.listdir('mpTranscripts'):
