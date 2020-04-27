@@ -235,14 +235,6 @@ def get_themes(input_file):
 			relevant_themes.append(theme)
 
 	return relevant_themes
-
-# to be used when we are to download the audio from web url
-def get_themes_url(input_url):
-	get_audio_from_url(input_url,'temp.mp3')
-	get_themes(input_audio = 'temp.mp3')
-	os.remove('temp.mp3')
-	os.remove('temp.wav')
-	return
 #********************************************************---------------------------------------------------------------------**************************************************
 # to be used when the audio is locally stored
 def get_quality(input_audio):
