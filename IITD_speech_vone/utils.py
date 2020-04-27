@@ -128,6 +128,7 @@ def remove_silence(input_audio):
 	sln.remove_silence(input_audio, output_audio)
 
 # to be used when we are to download the audio from web url
+
 def remove_silence_url(input_url):
 	get_audio_from_url(input_url,'temp.mp3')
 	remove_silence(input_audio = 'temp.mp3')
