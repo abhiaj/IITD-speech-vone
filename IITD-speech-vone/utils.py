@@ -3,7 +3,7 @@ This is the main library file which will have all the basic functions, we want t
 We will keep on appending gender, transcripts, silence removal and quality classification parts to this file
 
 Authors: Jayanth Reddy, Mohammad Wasih, Aaditeshwar Seth, Abhishek Burnwal, Prashit Raj, Priyadarshi 
-Last Modified: 7th August, 2018
+Last Modified: 30th April, 2020
 '''
 
 '''
