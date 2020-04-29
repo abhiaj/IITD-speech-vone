@@ -211,7 +211,7 @@ def get_themes(input_file):
 
 	stop_word_list = []
 	F = open('models/stopwords.txt')
-	stop_word_list = F.readlines()
+	stop_word_list = F.readlines() 
 	stop_word_list = [ e[:-1] for e in stop_word_list]
 	F.close()
 
@@ -224,9 +224,9 @@ def get_themes(input_file):
 		return [e,'error in reading file or file location not found']
 
 	for theme in theme_list:
-		vocb = pickle.load(open('models/'+theme+'_vocab', 'rb'))
-		tfidf_transformer = pickle.load(open('models/'+theme+'_tfidf', 'rb'))
-		model = pickle.load(open('models/'+theme+'_model', 'rb'))
+		vocb = pickle.load(open('models/'+theme+'_vocab.pk', 'rb'))
+		tfidf_transformer = pickle.load(open('models/'+theme+'_tfidf.pk', 'rb'))
+		model = pickle.load(open('models/'+theme+'_model.pk', 'rb'))
 		features = Th_exf.get_features([input_lst], vocb, stop_word_list)
 		features = tfidf_transformer.transform(features)
 		#print(features)
@@ -278,27 +278,27 @@ def get_quality_url(input_url):
 # Input to this function would be basically transcript in hindi from some audio file
 def find_date(sentence):
 
-  vectorizer, dateModel = pickle.load(open('./DOB/vectorizer','rb')), pickle.load(open('./DOB/dateModel','rb'))
-  monthModel, yearModel  = pickle.load(open('./DOB/monthModel','rb')), pickle.load(open('./DOB/yearModel','rb'))
+	vectorizer, dateModel = pickle.load(open('./DOB/vectorizer','rb')), pickle.load(open('./DOB/dateModel','rb'))
+	monthModel, yearModel  = pickle.load(open('./DOB/monthModel','rb')), pickle.load(open('./DOB/yearModel','rb'))
 
-  valid = 0
-  inputX = np.array([sentence])
-  x_Encoded = np.array([vectorizer.transform(inputX).toarray().squeeze()])
+	valid = 0
+	inputX = np.array([sentence])
+	x_Encoded = np.array([vectorizer.transform(inputX).toarray().squeeze()])
 
-  #First SVM Model will predict if there exists any of Date, Month or Year in the sentence, if it exists then it would call findDate.
-  dateP, monthP, yearP = dateModel.predict(x_Encoded), monthModel.predict(x_Encoded), yearModel.predict(x_Encoded)
-  valid = 1 if (dateP!=0 or monthP!=0 or yearP!=0) else 0
+	#First SVM Model will predict if there exists any of Date, Month or Year in the sentence, if it exists then it would call findDate.
+	dateP, monthP, yearP = dateModel.predict(x_Encoded), monthModel.predict(x_Encoded), yearModel.predict(x_Encoded)
+	valid = 1 if (dateP!=0 or monthP!=0 or yearP!=0) else 0
 
-  if valid == 0:
-      finalDOB = json.dumps({'Date':-1,'Month':-1,'Year':-1})
-      # print(json.loads(finalDOB))
-      return finalDOB
-  else:
-      #It will call findDate function of main.py file from DOB Module
-      finalDOB = mainDOB.findDate(sentence)
-      #finalDOB is be a JSON Object converted from python dictionary containing 'Date', 'Month' and 'Year' as key with their values
-      # print(json.loads(finalDOB))
-      return finalDOB
+	if valid == 0:
+		finalDOB = json.dumps({'Date':-1,'Month':-1,'Year':-1})
+		# print(json.loads(finalDOB))
+		return finalDOB
+	else:
+		#It will call findDate function of main.py file from DOB Module
+		finalDOB = mainDOB.findDate(sentence)
+		#finalDOB is be a JSON Object converted from python dictionary containing 'Date', 'Month' and 'Year' as key with their values
+		# print(json.loads(finalDOB))
+		return finalDOB
 
 #***************************************************---------------------------------------------------------------------------*************************************************
 #print(get_quality('ex2.mp3'))
