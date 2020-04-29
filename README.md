@@ -3,14 +3,17 @@ Github repository for the open source library "IITD-speech-vone", https://pypi.o
 
 This package is a useful library dealing with speech and text in Hindi
 For installing package:
-sudo pip install IITD_speech_vone
-##The package will be updated to python3
+sudo pip3 install IITD_speech_vone
+
+##The package has been updated to python3 and is no longer available for python2
+
 System dependencies required:
-1. python2.7
+1. python3
 2. ffmpeg: Install it by: sudo apt-get install ffmpeg
 3. gcloud: Install it by: curl https://sdk.cloud.google.com | bash  
 and follow the onscreen instructions
-
+4. pyAudioAnalysis >= 0.3: Install it by: sudo pip3 install pyAudioAnalysis==0.3.0
+5. scikit-learn>=0.22.2: Install it by: sudo pip3 install scikit-learn==0.22.2
 
 Once you have installed then just write up a tester script, for eg. test.py
 Then put this line in test.py:
@@ -41,9 +44,8 @@ utils.get_gender(input_audio):
 	given an  input_audio of a file in mp3, this function will try to predict its gender
 	It will return a string denoting male or female
 
-
 utils.get_gender_url(input_url):
-	given an  input_audio web url of a file in mp3, this function will try to predict its gender
+	given an input_audio web url of a file in mp3, this function will try to predict its gender
 	It will return a string denoting male or female
 
 utils.get_themes(input_file):
@@ -59,7 +61,7 @@ utils.get_quality_url(input_url):
 	It will return 'reject' if audio is rejected(poor quality) and 'accept' if audio is accepted(good quality).
 
 NOTE:
-The version of sklearn library must be "0.19.1" otherwise the models wouldn't give correct results
+The version of sklearn library must be "0.22.2" otherwise the models wouldn't give correct results
 For using automatic transcript utility(function), you need to have google cloud access.
 1. Create account on google cloud.
 2. Enable google cloud speech api: Go to Navigation menu and select APIs and Services->Library->Speech API(search) and enable it
