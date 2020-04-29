@@ -1,8 +1,8 @@
 
 
 # The model
-*/models/*
-*.pk
+#*/models/*
+#*.pk
 
 # Compiled source #
 ###################
