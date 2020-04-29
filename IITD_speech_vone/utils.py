@@ -149,18 +149,18 @@ def get_audio_from_url(input_url, output_file):
 	FP.close()
 #***************************************************--------------------------------------------------------------------*********************************************************
 
-# def get_transcript(bucket_name, bucket_folder, key_json, audio_folder):
-# 	'''
-# 	bucket_name , bucket_folder, key_json, audio_folder are input arguments
-# 	bucket_name -> name of google cloud bucket
-# 	bucket_folder -> name of the folder in the bucket where we want to upload audio files
-# 	key_json -> json file with credentials
-# 	audio_folder -> the folder containing audio files and we need transcripts of these audio files
-# 	this code outputs a folder named as 'audio_folder'_transcripts which has transcripts in .txt format with same name as audio file
-# 	'''
+def get_transcript(bucket_name, bucket_folder, key_json, audio_folder):
+	'''
+	bucket_name , bucket_folder, key_json, audio_folder are input arguments
+	bucket_name -> name of google cloud bucket
+	bucket_folder -> name of the folder in the bucket where we want to upload audio files
+	key_json -> json file with credentials
+	audio_folder -> the folder containing audio files and we need transcripts of these audio files
+	this code outputs a folder named as 'audio_folder'_transcripts which has transcripts in .txt format with same name as audio file
+	'''
 
-# 	Transcript_tr.upload(bucket_name, bucket_folder, key_json, audio_folder)
-# 	Transcript_tr.get_transcript(bucket_name, bucket_folder, key_json, audio_folder)
+	Transcript_tr.upload(bucket_name, bucket_folder, key_json, audio_folder)
+	Transcript_tr.get_transcript(bucket_name, bucket_folder, key_json, audio_folder)
 
 
 #***************************************************--------------------------------------------------------------------*********************************************************
@@ -199,6 +199,7 @@ def get_gender_url(input_url):
 	os.remove('temp.mp3')
 	return gender
 #***************************************************---------------------------------------------------------------------------*************************************************
+
 # to be used when the audio is locally stored
 def get_themes(input_file):
 	'''
