@@ -187,7 +187,7 @@ def get_gender( input_audio):
 	model = joblib.load(open('models/Gender_classifier_rbf_model_python3.pk', 'rb'))
 	scaler = pickle.load(open('models/scaler_gender_rbf_python3.pk', 'rb'))
 	prediction = model.predict(scaler.transform(features[:,0:136]))
-	if prediction[0]=='0':
+	if prediction[0]==0:
 		return 'male'
 	else:
 		return 'female'
