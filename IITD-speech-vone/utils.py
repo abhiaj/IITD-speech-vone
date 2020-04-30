@@ -2,7 +2,7 @@
 This is the main library file which will have all the basic functions, we want to provide to the user
 We will keep on appending gender, transcripts, silence removal and quality classification parts to this file
 
-Authors: Jayanth Reddy, Mohammad Wasih, Aaditeshwar Seth, Abhishek Burnwal, Prashit Raj, Priyadarshi 
+Authors: Jayanth Reddy, Mohammad Wasih, Aaditeshwar Seth, Abhishek Burnwal, Prashit Raj, Priyadarshi
 Last Modified: 30th April, 2020
 '''
 
@@ -56,6 +56,8 @@ import Theme.extractFeatures as Th_exf
 #done with Theme classsification imports
 
 import DOB.main as mainDOB
+import Name.main as mainName
+import Location.main as mainLoc
 #-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
@@ -212,7 +214,7 @@ def get_themes(input_file):
 
 	stop_word_list = []
 	F = open('models/stopwords.txt')
-	stop_word_list = F.readlines() 
+	stop_word_list = F.readlines()
 	stop_word_list = [ e[:-1] for e in stop_word_list]
 	F.close()
 
@@ -277,7 +279,7 @@ def get_quality_url(input_url):
 
 #*******************************************************************************
 # Input to this function would be basically transcript in hindi from some audio file
-def find_date(sentence):
+def get_date(sentence):
 
 	vectorizer, dateModel = pickle.load(open('./DOB/vectorizer','rb')), pickle.load(open('./DOB/dateModel','rb'))
 	monthModel, yearModel  = pickle.load(open('./DOB/monthModel','rb')), pickle.load(open('./DOB/yearModel','rb'))
@@ -300,6 +302,25 @@ def find_date(sentence):
 		#finalDOB is be a JSON Object converted from python dictionary containing 'Date', 'Month' and 'Year' as key with their values
 		# print(json.loads(finalDOB))
 		return finalDOB
+
+def get_name(input_string):
+	naam = mainName.get_name(input_string)
+	if(len(naam)==0):
+		jsonnaam = json.dumps({"names":[]})
+	else:
+		jsonnaam = json.dumps({"names":naam})
+	return jsonnaam
+
+def get_loc(input_string):
+	sthaan = mainLoc.get_loc(input_string)
+	if(sthaan[0][0]==-1):
+		jsonsthaan = json.dumps({"locs":[]})
+	else:
+		sthaandict = []
+		for s in sthaan:
+			sthaandict.append({"state":s[1], "district":s[2],"subdistrict":s[3],"alpha":s[0]})
+		jsonsthaan = json.dumps({"locs":sthaandict})
+	return jsonsthaan
 
 #***************************************************---------------------------------------------------------------------------*************************************************
 #print(get_quality('ex2.mp3'))
