@@ -25,7 +25,7 @@ Utility functions:
 utils.remove_silence(input_audio):
 	given an input audio in WAV format, this function will remove silence periods from it
 	and make an audio file named input_audio_rmsilence.wav
-	
+
 utils.remove_silence_url(input_url):
 	given an input audio web url, this function will remove silence periods from it
 	and make an audio file named temp_rmsilence.wav
@@ -59,6 +59,18 @@ utils.get_quality(input_audio):
 utils.get_quality_url(input_url):
 	given an input_audio's web url, this function will try to predict its quality
 	It will return 'reject' if audio is rejected(poor quality) and 'accept' if audio is accepted(good quality).
+
+utils.get_loc(input_transcript):
+	given an  input_transcript, this function will try to extract embedded location in it
+	It will return a list of dictionaries, each dictionary having a labelled State, District, SubDistrict and Confidence value for it.
+
+utils.get_name(input_transcript):
+	given an  input_transcript, this function will try to extract embedded name in it
+	It will return a list of strings, each string being a viable name in i
+
+utils.get_date(sentence):
+ 	given an input hindi sentence , this function will try to extract embedded date in it
+	It will return a dictionary in form of Json Object with keys as 'Date', 'Month' and 'Year'. Value for month could be hindi month or english month whatever the input sentence contains.
 
 NOTE:
 The version of sklearn library must be "0.22.2" otherwise the models wouldn't give correct results
