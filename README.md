@@ -14,8 +14,9 @@ System dependencies required:
 and follow the onscreen instructions
 4. pyAudioAnalysis >= 0.3: Install it by: sudo pip3 install pyAudioAnalysis==0.3.0
 5. scikit-learn>=0.22.2: Install it by: sudo pip3 install scikit-learn==0.22.2
+6. sudo apt-get install libpq-dev python-dev
 
-Install system dependencies with pip3 -r install requirements.txt
+Install system dependencies with pip3 install -r requirements.txt
 
 Once you have installed then just write up a tester script, for eg. test.py
 Then put this line in test.py:
