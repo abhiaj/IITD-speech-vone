@@ -15,6 +15,8 @@ and follow the onscreen instructions
 4. pyAudioAnalysis >= 0.3: Install it by: sudo pip3 install pyAudioAnalysis==0.3.0
 5. scikit-learn>=0.22.2: Install it by: sudo pip3 install scikit-learn==0.22.2
 6. sudo apt-get install libpq-dev python-dev
+7. polyglot download embeddings2.hi
+8. polyglot download ner2.hi
 
 Install system dependencies with pip3 install -r requirements.txt
 
