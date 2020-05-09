@@ -293,7 +293,7 @@ def get_date(sentence):
 	valid = 1 if (dateP!=0 or monthP!=0 or yearP!=0) else 0
 
 	if valid == 0:
-		finalDOB = json.dumps({'Date':-1,'Month':-1,'Year':-1})
+		finalDOB = json.dumps({'Date':'-1','Month':'-1','Year':'-1'},ensure_ascii=False)
 		# print(json.loads(finalDOB))
 		return finalDOB
 	else:

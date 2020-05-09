@@ -193,5 +193,5 @@ def findDate(sentence):
                     flagYear =1
                     break
 
-    json_Output = json.dumps(outSentence)
+    json_Output = json.dumps(outSentence,ensure_ascii=False)
     return json_Output
