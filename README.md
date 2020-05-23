@@ -73,7 +73,7 @@ utils.get_name(input_transcript):
 	given an  input_transcript, this function will try to extract embedded name in it
 	It will return a list of strings, each string being a viable name in i
 
-utils.get_date(sentence):
+utils.get_dob(sentence):
  	given an input hindi sentence , this function will try to extract embedded date in it
 	It will return a dictionary in form of Json Object with keys as 'Date', 'Month' and 'Year'. Value for month could be hindi month or english month whatever the input sentence contains.
 

@@ -53,7 +53,7 @@ import Accept_Reject.AR_classifier as AR_classifier
 #done with Accept_Reject imports
 
 import Theme.extractFeatures as Th_exf
-#done with Theme classsification imports
+# done with Theme classsification imports
 
 import DOB.main as mainDOB
 import Name.main as mainName
@@ -279,29 +279,29 @@ def get_quality_url(input_url):
 
 #*******************************************************************************
 # Input to this function would be basically transcript in hindi from some audio file
-def get_date(sentence):
+def get_dob(sentence):
 
-	vectorizer, dateModel = pickle.load(open('./DOB/vectorizer','rb')), pickle.load(open('./DOB/dateModel','rb'))
-	monthModel, yearModel  = pickle.load(open('./DOB/monthModel','rb')), pickle.load(open('./DOB/yearModel','rb'))
+	# vectorizer, dateModel = pickle.load(open('./DOB/vectorizer','rb')), pickle.load(open('./DOB/dateModel','rb'))
+	# monthModel, yearModel  = pickle.load(open('./DOB/monthModel','rb')), pickle.load(open('./DOB/yearModel','rb'))
 
-	valid = 0
-	inputX = np.array([sentence])
-	x_Encoded = np.array([vectorizer.transform(inputX).toarray().squeeze()])
+	# valid = 0
+	# inputX = np.array([sentence])
+	# x_Encoded = np.array([vectorizer.transform(inputX).toarray().squeeze()])
 
 	#First SVM Model will predict if there exists any of Date, Month or Year in the sentence, if it exists then it would call findDate.
-	dateP, monthP, yearP = dateModel.predict(x_Encoded), monthModel.predict(x_Encoded), yearModel.predict(x_Encoded)
-	valid = 1 if (dateP!=0 or monthP!=0 or yearP!=0) else 0
+	# dateP, monthP, yearP = dateModel.predict(x_Encoded), monthModel.predict(x_Encoded), yearModel.predict(x_Encoded)
+	# valid = 1 if (dateP!=0 or monthP!=0 or yearP!=0) else 0
 
-	if valid == 0:
-		finalDOB = json.dumps({'Date':'-1','Month':'-1','Year':'-1'},ensure_ascii=False)
-		# print(json.loads(finalDOB))
-		return finalDOB
-	else:
+	# if valid == 0:
+	# 	finalDOB = json.dumps({'Date':'-1','Month':'-1','Year':'-1'},ensure_ascii=False)
+	# 	# print(json.loads(finalDOB))
+	# 	return finalDOB
+	# else:
 		#It will call findDate function of main.py file from DOB Module
-		finalDOB = mainDOB.findDate(sentence)
+	finalDOB = mainDOB.findDate(sentence)
 		#finalDOB is be a JSON Object converted from python dictionary containing 'Date', 'Month' and 'Year' as key with their values
 		# print(json.loads(finalDOB))
-		return finalDOB
+	return finalDOB
 
 def get_name(input_string):
 	naam = mainName.get_name(input_string)

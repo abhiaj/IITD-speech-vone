@@ -29,19 +29,19 @@ print(loc1)
 # print(loc3)
 # print(loc4)
 
-# For Date
-# from utils import get_date
+# For DOB
+# from utils import get_dob
 # s = "12 अक्टूबर 2015"
 # t = "13 अप्रैल 2016"
 # u = "3 तारीख नौवां महीना 2014"
 # v = "आषाढ़ महीना 4 तारीख"
 # w = ""
 
-# date1 = get_date(s)
-# date2 = get_date(t)
-# date3 = get_date(u)
-# date4 = get_date(v)
-# date5 = get_date(w)
+# date1 = get_dob(s)
+# date2 = get_dob(t)
+# date3 = get_dob(u)
+# date4 = get_dob(v)
+# date5 = get_dob(w)
 
 # print(date1)
 # print(date2)
