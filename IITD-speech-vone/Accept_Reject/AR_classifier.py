@@ -1,7 +1,7 @@
 import numpy as np
 import csv
 from pyAudioAnalysis import audioBasicIO
-from pyAudioAnalysis import ShortTermFeatures
+from pyAudioAnalysis import audioFeatureExtraction
 
 from sklearn.preprocessing import StandardScaler
 from sklearn.svm import SVC

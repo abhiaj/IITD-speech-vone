@@ -1,5 +1,5 @@
 from pyAudioAnalysis import audioBasicIO
-from pyAudioAnalysis import ShortTermFeatures
+from pyAudioAnalysis import audioFeatureExtraction
 from statistics import mean, stdev
 import csv
 import timeit
@@ -13,8 +13,8 @@ def get_features(input_file ):
 	by default we will assume gender to be male(0) and then we will compare our test predictions with gender = male and decide what did the model predict the gender as
 	'''
 	l = []
-	[Fs, x] = audioBasicIO.read_audio_file(input_file)
-	F, fm = ShortTermFeatures.feature_extraction(x, Fs, 0.05*Fs, 0.025*Fs)
+	[Fs, x] = audioBasicIO.readAudioFile(input_file)
+	F, fm = audioFeatureExtraction.stFeatureExtraction(x, Fs, 0.05*Fs, 0.025*Fs)
 	for j in range(34):
 		l.append(min(F[j]))
 		l.append(max(F[j]))
@@ -31,8 +31,8 @@ def generate_data(output_csv):
 	for i in range(1,822,1):
 		print("f",i)
 		l = []
-		[Fs, x] = audioBasicIO.read_audio_file("f" + str(i) + ".wav")
-		F, fm = ShortTermFeatures.feature_extraction(x, Fs, 0.05*Fs, 0.025*Fs)
+		[Fs, x] = audioBasicIO.readAudioFile("f" + str(i) + ".wav")
+		F, fm = audioFeatureExtraction.stFeatureExtraction(x, Fs, 0.05*Fs, 0.025*Fs)
 		for j in range(34):
 			l.append(min(F[j]))
 			l.append(max(F[j]))
@@ -43,8 +43,8 @@ def generate_data(output_csv):
 	for i in range(1,822,1):
 		print("m",i)
 		l = []
-		[Fs, x] = audioBasicIO.read_audio_file("m" + str(i) + ".wav")
-		F, fm = ShortTermFeatures.feature_extraction(x, Fs, 0.05*Fs, 0.025*Fs)
+		[Fs, x] = audioBasicIO.readAudioFile("m" + str(i) + ".wav")
+		F, fm = audioFeatureExtraction.stFeatureExtraction(x, Fs, 0.05*Fs, 0.025*Fs)
 		for j in range(34):
 			l.append(min(F[j]))
 			l.append(max(F[j]))
