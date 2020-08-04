@@ -31,7 +31,7 @@ def get_features(input_file, gender = 0):
 			l.append(max(F[j]))
 			l.append(mean(F[j]))
 			l.append(stdev(F[j]))
-		l.append(gender)
+# 		l.append(gender)
 		l1.append(l)
 	return l1
 
