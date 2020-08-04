@@ -49,9 +49,9 @@ utils.get_gender(input_audio):
 	given an  input_audio of a file in mp3, this function will try to predict its gender
 	It will return a string denoting male or female
 
-utils.get_gender_url(input_url):
+utils.get_gender_url(input_url,download_permanently = False):
 	given an input_audio web url of a file in mp3, this function will try to predict its gender
-	It will return a string denoting male or female
+	It will return a string denoting male or female. If download permanently is set to true then the audio data will be permanently saved.
 
 utils.get_themes(input_file):
 	this function takes transcpript of audio file in text format as input
@@ -61,9 +61,10 @@ utils.get_quality(input_audio):
 	given an input_audio, this function will try to predict its quality
 	It will return 'reject' if audio is rejected(poor quality) and 'accept' if audio is accepted(good quality).
 
-utils.get_quality_url(input_url):
+utils.get_quality_url(input_url,download_permanently = False):
 	given an input_audio's web url, this function will try to predict its quality
 	It will return 'reject' if audio is rejected(poor quality) and 'accept' if audio is accepted(good quality).
+	If download permanently is set to true then the audio data will be permanently saved.
 
 utils.get_loc(input_transcript):
 	given an  input_transcript, this function will try to extract embedded location in it
