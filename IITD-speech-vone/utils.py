@@ -190,7 +190,7 @@ def get_gender(input_audio):
 	input_audio_wav = input_audio_name + '.wav'
 	#remove_silence(input_audio_wav)
 	features = np.array([GC_exf.get_features(input_audio_name + '.wav')]).astype(float)
-	print(features.shape)
+	# print(features.shape)
 	# features = features.reshape(features.shape[1],-1)
 	# features = features.T
 	#os.remove(input_audio_name + '.wav')
