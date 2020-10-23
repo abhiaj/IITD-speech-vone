@@ -45,7 +45,7 @@ import Gender.gender_classifier as  gender_classifier
 import Silence_Removal.sln as sln
 #done with Silence_Removal imports
 
-import Transcript.transcript as Transcript_tr
+#import Transcript.transcript as Transcript_tr
 #done with Automatic_Transcripts imports
 
 import Accept_Reject.extractFeatures as AR_exf
