@@ -8,6 +8,13 @@ This package is a useful library for automating content moderation activities by
 
 > The package has been updated to python3 and is no longer available for python2
 
+## System dependencies required
+1. python3
+2. ffmpeg: Install it by: sudo apt-get install ffmpeg
+3. gcloud: Install it by: curl https://sdk.cloud.google.com | bash and follow the onscreen instructions
+4. sudo apt-get install libpq-dev python-dev
+5. sudo apt-get install python-numpy libicu-dev
+
 ## Running instructions
 - We recommend creating a virtual environment
 
@@ -19,15 +26,10 @@ cd IITD-speech-vone/Name/libsvm-3.23
 make
 cd python
 make
+cd ../../../
+polyglot download embeddings2.hi
+polyglot download ner2.hi
 ```
-
-System dependencies required:
-1. python3
-2. ffmpeg: Install it by: sudo apt-get install ffmpeg
-3. gcloud: Install it by: curl https://sdk.cloud.google.com | bash and follow the onscreen instructions
-4. sudo apt-get install libpq-dev python-dev
-5. polyglot download embeddings2.hi
-6. polyglot download ner2.hi
 
 You are now ready to run the classifiers and entity extractors using the library functions (the details of the functions is followed).
 
