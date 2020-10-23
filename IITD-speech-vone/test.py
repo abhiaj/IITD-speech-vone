@@ -50,7 +50,7 @@ print(loc1)
 # print(date5)
 
 from utils import remove_silence_url
-# remove_silence_url("http://voice.gramvaani.org/fsmedia/recordings/137/295538.mp3")
+remove_silence_url("http://voice.gramvaani.org/fsmedia/recordings/137/295538.mp3")
 
 from utils import get_gender_url
 print(get_gender_url("http://voice.gramvaani.org/fsmedia/recordings/137/301897.mp3"))
@@ -62,4 +62,6 @@ from utils import get_themes
 print(get_themes("samp.txt"))
 
 from utils import get_dob
-# print(get_dob(s))
+print(get_dob(s))
+
+from utils import get_transcript

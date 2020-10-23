@@ -45,7 +45,7 @@ import Gender.gender_classifier as  gender_classifier
 import Silence_Removal.sln as sln
 #done with Silence_Removal imports
 
-# import Transcript.transcript as Transcript_tr
+import Transcript.transcript as Transcript_tr
 #done with Automatic_Transcripts imports
 
 import Accept_Reject.extractFeatures as AR_exf
@@ -134,9 +134,16 @@ def remove_silence(input_audio):
 
 # to be used when we are to download the audio from web url
 
-def remove_silence_url(input_url):
+def remove_silence_url(input_url, download_permanently = False):
 	get_audio_from_url(input_url,'temp.mp3')
-	remove_silence(input_audio = 'temp.mp3')
+	mtw.convert_mp3_to_wav('temp.mp3')
+	remove_silence(input_audio = 'temp.wav')
+	if(download_permanently != True):
+		try:
+			os.remove('temp.mp3')
+			os.remove('temp.wav')
+		except Exception as e:
+			print(e)
 	return
 #***************************************************--------------------------------------------------------------------*********************************************************
 
@@ -183,8 +190,9 @@ def get_gender(input_audio):
 	input_audio_wav = input_audio_name + '.wav'
 	#remove_silence(input_audio_wav)
 	features = np.array([GC_exf.get_features(input_audio_name + '.wav')]).astype(float)
-	features = features.reshape(features.shape[1],-1)
-	features = features.T
+	print(features.shape)
+	# features = features.reshape(features.shape[1],-1)
+	# features = features.T
 	#os.remove(input_audio_name + '.wav')
 	#model_path = pkg_resources.resource_filename('Indian_Speech_Lib', 'models/accept_reject')
 	# print(features.shape)
