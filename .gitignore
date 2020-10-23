@@ -47,3 +47,5 @@ Thumbs.db
 
 voiceApps/lib/*
 voiceApps/bin/*
+*.wav
+*.mp3
