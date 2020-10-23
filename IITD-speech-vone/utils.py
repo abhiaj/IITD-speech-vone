@@ -183,8 +183,11 @@ def get_gender(input_audio):
 	input_audio_wav = input_audio_name + '.wav'
 	#remove_silence(input_audio_wav)
 	features = np.array([GC_exf.get_features(input_audio_name + '.wav')]).astype(float)
+	features = features.reshape(features.shape[1],-1)
+	features = features.T
 	#os.remove(input_audio_name + '.wav')
 	#model_path = pkg_resources.resource_filename('Indian_Speech_Lib', 'models/accept_reject')
+	# print(features.shape)
 	model = joblib.load(open('models/Gender_classifier_rbf_model_python3.pk', 'rb'))
 	scaler = pickle.load(open('models/scaler_gender_rbf_python3.pk', 'rb'))
 	prediction = model.predict(scaler.transform(features[:,0:136]))
@@ -198,7 +201,11 @@ def get_gender_url(input_url, download_permanently = False):
 	get_audio_from_url(input_url,'temp.mp3')
 	gender = get_gender(input_audio = 'temp.mp3')
 	if(download_permanently != True):
-		os.remove('temp.mp3')
+		try:
+			os.remove('temp.mp3')
+			os.remove('temp.wav')
+		except Exception as e:
+			print(e)
 	return gender
 #***************************************************---------------------------------------------------------------------------*************************************************
 
@@ -263,9 +270,10 @@ def get_quality(input_audio):
 	#os.remove(input_audio_name + '.wav')
 	#model_path = pkg_resources.resource_filename('Indian_Speech_Lib', 'models/accept_reject')
 	model = joblib.load(open('models/AR_python3_SVM.pk', 'rb'))
-	scaler = pickle.load(open('models/AR_scaler.pk', 'rb'))
-	score = model.score(scaler.transform(features[:, 0:137]), features[:, 137])
-	if score > 0.5:
+	scaler = pickle.load(open('models/AR_scaler_new.pk', 'rb'))
+	prediction = model.predict(scaler.transform(features[:, 0:137]))
+	# print(model.classes_)
+	if int(prediction[0]) == 1:
 		return 'reject'
 	else:
 		return 'accept'
@@ -275,7 +283,11 @@ def get_quality_url(input_url, download_permanently = False):
 	get_audio_from_url(input_url,'temp.mp3')
 	quality = get_quality(input_audio = 'temp.mp3')
 	if(download_permanently != True):
-		os.remove('temp.mp3')
+		try:
+			os.remove('temp.mp3')
+			os.remove('temp.wav')
+		except Exception as e:
+			print(e)
 	return quality
 
 #*******************************************************************************

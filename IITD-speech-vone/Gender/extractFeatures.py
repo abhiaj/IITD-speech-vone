@@ -4,6 +4,7 @@ from statistics import mean, stdev
 import csv
 import timeit
 import soundfile as sf
+import numpy as np
 
 def get_features(input_file, gender = 0):
 	'''
@@ -16,7 +17,7 @@ def get_features(input_file, gender = 0):
 	i=0
 	j=1
 	temp = samplerate*10
-	n = (len(data)/temp)
+	n = int(len(data)/temp)
 	while i < len(data):
 		sf.write('m' + str(j) + '.wav', data[i:i+temp], samplerate)
 		i += temp
@@ -33,6 +34,11 @@ def get_features(input_file, gender = 0):
 			l.append(stdev(F[j]))
 # 		l.append(gender)
 		l1.append(l)
+	l1 = np.array(l1)
+	m = l1.shape[1]
+	# print(m)
+	l1 = l1.reshape(m,-1)
+	# print(l1.shape)
 	return l1
 
 # def generate_data(output_csv):

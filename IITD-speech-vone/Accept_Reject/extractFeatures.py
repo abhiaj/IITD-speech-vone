@@ -27,10 +27,10 @@ def get_features(input_file):
 		l.append(np.percentile(F[j, :], 95))
 	
 	l.append(len(F[j])/399)
-	if fname.startswith("acc"):
-		l.append(2)
-	else:
-		l.append(1)
+	# if fname.startswith("acc"):
+	# 	l.append(2)
+	# else:
+	# 	l.append(1)
 	l1.append(l)
 	return l1
 ''' this function will extract the features from a wav audio file and save it to a csv file'''
