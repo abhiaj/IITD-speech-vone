@@ -37,7 +37,7 @@ You are now ready to run the classifiers and entity extractors using the library
 python test.py
 ```
 
-Utility functions:
+## Utility functions
 
 ```python
 utils.remove_silence(input_audio)
