@@ -209,7 +209,8 @@ def get_gender_url(input_url, download_permanently = False):
 	return gender
 #***************************************************---------------------------------------------------------------------------*************************************************
 
-# to be used when the audio is locally stored
+# to be used when the transcript is locally stored
+#infult_file is input transcript
 def get_themes(input_file):
 	'''
 	this function takes transcpript of audio file in text format as input
@@ -230,7 +231,7 @@ def get_themes(input_file):
 			input_lst = F.read()
 		input_lst = [ e.encode('utf-8') for e in input_lst.split(u' ')]
 		F.close()
-	except e:
+	except Exception as e:
 		return [e,'error in reading file or file location not found']
 
 	for theme in theme_list:
