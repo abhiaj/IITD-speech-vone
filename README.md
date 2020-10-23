@@ -31,7 +31,11 @@ System dependencies required:
 
 You are now ready to run the classifiers and entity extractors using the library functions (the details of the functions is followed).
 
-Once you have installed then just write up a tester script, for eg. check out `test.py`
+- Once you have installed then just write up a tester script, for eg. check out `test.py`
+
+```python
+python test.py
+```
 
 Utility functions:
 
