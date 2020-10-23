@@ -197,7 +197,7 @@ def get_gender(input_audio):
 def get_gender_url(input_url, download_permanently = False):
 	get_audio_from_url(input_url,'temp.mp3')
 	gender = get_gender(input_audio = 'temp.mp3')
-	if(download_permanently != True)
+	if(download_permanently != True):
 		os.remove('temp.mp3')
 	return gender
 #***************************************************---------------------------------------------------------------------------*************************************************
@@ -274,7 +274,7 @@ def get_quality(input_audio):
 def get_quality_url(input_url, download_permanently = False):
 	get_audio_from_url(input_url,'temp.mp3')
 	quality = get_quality(input_audio = 'temp.mp3')
-	if(download_permanently != True) 
+	if(download_permanently != True):
 		os.remove('temp.mp3')
 	return quality
 

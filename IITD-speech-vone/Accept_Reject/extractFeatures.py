@@ -1,5 +1,5 @@
 from pyAudioAnalysis import audioBasicIO
-from pyAudioAnalysis import audioFeatureExtraction
+from pyAudioAnalysis import ShortTermFeatures
 from statistics import mean, stdev
 import numpy as np
 import csv
@@ -16,8 +16,8 @@ def get_features(input_file):
 	'''
 	data, samplerate = sf.read(input_file)
 	l1 = []
-	[Fs, x] = audioBasicIO.readAudioFile(input_file)
-	F,f_names = audioFeatureExtraction.stFeatureExtraction(x, Fs, 0.05*Fs, 0.025*Fs)
+	[Fs, x] = audioBasicIO.read_audio_file(input_file)
+	F,f_names = ShortTermFeatures.feature_extraction(x, Fs, 0.05*Fs, 0.025*Fs)
 	k = 0
 	l = []
 	for j in range(34):

@@ -1,5 +1,5 @@
 from pyAudioAnalysis import audioBasicIO
-from pyAudioAnalysis import audioFeatureExtraction
+from pyAudioAnalysis import ShortTermFeatures
 from statistics import mean, stdev
 import csv
 import timeit
@@ -24,14 +24,14 @@ def get_features(input_file, gender = 0):
 	l1=[]
 	for i in range(1, n+1, 1):
 		l = []
-		[Fs, x] = audioBasicIO.readAudioFile("m" + str(i) + ".wav")
-		F,fm = audioFeatureExtraction.stFeatureExtraction(x, Fs, 0.05*Fs, 0.025*Fs)
+		[Fs, x] = audioBasicIO.read_audio_file("m" + str(i) + ".wav")
+		F,fm = ShortTermFeatures.feature_extraction(x, Fs, 0.05*Fs, 0.025*Fs)
 		for j in range(34):
 			l.append(min(F[j]))
 			l.append(max(F[j]))
 			l.append(mean(F[j]))
 			l.append(stdev(F[j]))
-		l.append(gender)
+# 		l.append(gender)
 		l1.append(l)
 	return l1
 
