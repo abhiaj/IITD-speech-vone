@@ -1,67 +1,41 @@
-from utils import get_name
+from utils import get_name, get_loc, get_dob, remove_silence_url, get_gender_url, get_quality_url, get_themes, get_dob
 
 s = "उठाया जाता है बिहार की आने वाली सीमा से मिल जायगी दिलीप पांडे मोबाइल वाणी "
 t = "शंकर सिंह कुंदन कुमार अरविन्द झा सहित कई अन्य ने बताया कि दिन भर खेत में म्हणत से टमाटर को तोडना पड़ता है "
 u = " "
 v = "उत्तर प्रदेश बी एच यू वाराणसी"
-name1 = get_name(s)
-# name2 = get_name(t)
-# name3 = get_name(u)
-# name4 = get_name(v)
-print(name1)
-# print(name2)
-# print(name3)
-# print(name4)
+name1 = get_name(s)    # Can check for s,t,u and v
 
-from utils import get_loc
+print("Name is : {}".format(name1))
 
 s = "मैं सिद्धेश अभियान जिला का छत्तीसगढ़ में रहने वाला हूं ब्लाइंड स्कूल आरा वालों में पढ़ाई करता हूं मैं नवी कक्षा में पढ़ाई करता हूं अरे नाम और गांव जिला"
 t = "उत्तर प्रदेश बी एच यू वाराणसी"
 u = "शंकर सिंह कुंदन कुमार"
 v = " "
 loc1 = get_loc(s)
-# loc2 = get_loc(t)
-# loc3 = get_loc(u)
-# loc4 = get_loc(v)
-#
-print(loc1)
-# print(loc2)
-# print(loc3)
-# print(loc4)
 
-# For DOB
-# from utils import get_dob
-# s = "12 अक्टूबर 2015"
-# t = "13 अप्रैल 2016"
-# u = "3 तारीख नौवां महीना 2014"
-# v = "आषाढ़ महीना 4 तारीख"
-# w = ""
+print("Location is : {}".format(loc1))
 
-# date1 = get_dob(s)
-# date2 = get_dob(t)
-# date3 = get_dob(u)
-# date4 = get_dob(v)
-# date5 = get_dob(w)
+s = "12 अक्टूबर 2015"
+t = "13 अप्रैल 2016"
+u = "3 तारीख नौवां महीना 2014"
+v = "आषाढ़ महीना 4 तारीख"
+w = ""
 
-# print(date1)
-# print(date2)
-# print(date3)
-# print(date4)
-# print(date5)
+date1 = get_dob(s)
 
-from utils import remove_silence_url
+print("Date of Birth is : {}".format(date1))
+
+# Remove Silence
 remove_silence_url("http://voice.gramvaani.org/fsmedia/recordings/137/295538.mp3")
 
-from utils import get_gender_url
-print(get_gender_url("http://voice.gramvaani.org/fsmedia/recordings/137/301897.mp3"))
+# Get gender
+print("Gender of user : {}".format(get_gender_url("http://voice.gramvaani.org/fsmedia/recordings/137/301897.mp3")))
 
-from utils import get_quality_url
-print(get_quality_url("http://voice.gramvaani.org/fsmedia/recordings/137/295538.mp3"))
+# Get Audio quality (Acceptable or Blank/Noisy)
+print("Audio Quality : {}".format(get_quality_url("http://voice.gramvaani.org/fsmedia/recordings/137/295538.mp3")))
 
-from utils import get_themes
-print(get_themes("samp.txt"))
+# Get themes
+print("Theme is : {}".format(get_themes("samp.txt")))
 
-from utils import get_dob
-print(get_dob(s))
-
-from utils import get_transcript
+#from utils import get_transcript
