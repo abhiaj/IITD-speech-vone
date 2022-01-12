@@ -22,7 +22,7 @@ numpy==1.19.2
 packaging==20.4
 pandas==1.1.3
 Pillow==8.0.1
-pipenv==2018.11.26
+pipenv==2022.1.8
 polyglot==16.7.4
 psycopg2-binary==2.8.6
 pyAudioAnalysis==0.3.0
